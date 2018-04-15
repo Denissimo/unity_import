@@ -10,7 +10,8 @@ public class Portal : MonoBehaviour {
 
 	public GameObject portal1;
 	public GameObject portal2;
-	public GameObject rotatedPortal;
+	public GameObject rotatedPortal1;
+	public GameObject rotatedPortal2;
 	public GameObject baida;
 
 	public GameObject cube;
@@ -24,7 +25,8 @@ public class Portal : MonoBehaviour {
 	public Quaternion quatBaidaZ;
 	public Quaternion baidaRot;
 
-	float degPerTime;
+	float degPerTime1;
+	float degPerTime2;
 
 	float baiX = .3F;
 	float baiY = .3F;
@@ -71,22 +73,22 @@ public class Portal : MonoBehaviour {
 		//cube.transform.position = portalRotation1 * distance0;
 		//cube.transform.position = (portalPosition1 - portalRotation1 * distance1);
 
-		camera1.transform.position = (portalPosition2 + portalRotation2 * distance1);
-		camera2.transform.position = (portalPosition1 + portalRotation1 * distance2);
+		camera1.transform.position = (portalPosition2 + portalRotation2 * portalRotation1 * distance1);
+		camera2.transform.position = (portalPosition1 + portalRotation1 * portalRotation2 * distance2);
 
 		//camera1.transform.position = (portalPosition2 + distance1);
 		//camera2.transform.position = (portalPosition1 + distance2);
 
-		camera1.transform.rotation =  portalRotation2 * playerRotation;
-		float near1 = distance1.magnitude - 2;
+		camera1.transform.rotation =  portalRotation1 * portalRotation2 * playerRotation;
+		float near1 = distance1.magnitude - 1;
 		if (near1 < 0.000001F) {
 			near1 = 0.000001F;
 		}
-		//camera1.nearClipPlane = near1;
+		camera1.nearClipPlane = near1;
 //		camera1.transform.Rotate(0, 180, 0);
 
-		camera2.transform.rotation = portalRotation1 * playerRotation;
-		float near2 = distance2.magnitude - 2;
+		camera2.transform.rotation = portalRotation2 * portalRotation1 * playerRotation;
+		float near2 = distance2.magnitude - 1;
 		if (near2 < 0.01F) {
 			near2 = 0.01F;
 		}
@@ -95,18 +97,22 @@ public class Portal : MonoBehaviour {
 
 		//camera1.transform.rotation
 
-		//camera1.transform.LookAt (portal2.transform.position);
-		//camera2.transform.LookAt (portal1.transform.position);
 		//Debug.Log (distance2);
 	}
 
 	void rot()
 	{
-		float rotPerSec = .00F;
-		float degPerSec = 360 * rotPerSec;
-		degPerTime = degPerSec * Time.deltaTime;
+		float rotPerSec1 = .00F;
+		float degPerSec1 = 360 * rotPerSec1;
 
-		rotatedPortal.transform.Rotate(0, degPerTime, 0);
+		float rotPerSec2 = .00F;
+		float degPerSec2 = 360 * rotPerSec2;
+
+		degPerTime1 = degPerSec1 * Time.deltaTime;
+		degPerTime2 = degPerSec2 * Time.deltaTime;
+
+		rotatedPortal1.transform.Rotate(0, degPerTime1, 0);
+		rotatedPortal2.transform.Rotate(0, degPerTime2, 0);
 		//Debug.Log (degPerTime);
 	}
 }

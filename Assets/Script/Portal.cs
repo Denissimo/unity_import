@@ -17,7 +17,7 @@ public class Portal : MonoBehaviour {
 
 	public Camera camera1;
 	public Camera camera2;
-	public Quaternion quatPortal = Quaternion.Euler(-90, 0, 180);
+	public Quaternion quatPortal = Quaternion.Euler(0, 0, 0);
 	public Quaternion quatCamera = Quaternion.Euler(90, 0, 0);
 	public Quaternion quatBaidaX;
 	public Quaternion quatBaidaY;
@@ -33,7 +33,7 @@ public class Portal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//transform.position = new Vector3 (100, 100, 100);
-		Debug.Log ("ZZZZZ");
+		Debug.Log (portal1.transform.localScale.x);
 		baidaRot = baida.transform.rotation;
 
 		//Ray ray = new Ray (portal1.transform.position, 2);
@@ -41,7 +41,7 @@ public class Portal : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
 
         quatBaidaX = Quaternion.AngleAxis(baiX++, Vector3.right);
@@ -57,11 +57,14 @@ public class Portal : MonoBehaviour {
 		Vector3 portalPosition2 = portal2.transform.position;
 
 		Quaternion playerRotation = player.transform.rotation;
-		Quaternion portalRotation1 = portal1.transform.rotation * quatPortal;
-		Quaternion portalRotation2 = portal2.transform.rotation * quatPortal;
+		Quaternion portalRotation1 = portal1.transform.rotation;
+		Quaternion portalRotation2 = portal2.transform.rotation;
 
-		Vector3 distance1 = portalPosition1 - playerPosition;
-		Vector3 distance2 = portalPosition2 - playerPosition;
+//		Vector3 distance1 = portalPosition1 - playerPosition;
+//		Vector3 distance2 = portalPosition2 - playerPosition;
+
+		Vector3 distance1 = playerPosition - portalPosition1;
+		Vector3 distance2 = playerPosition - portalPosition2;
 
 		Vector3 distance0 = playerPosition - portalPosition1;
 
@@ -71,11 +74,24 @@ public class Portal : MonoBehaviour {
 		camera1.transform.position = (portalPosition2 + portalRotation2 * distance1);
 		camera2.transform.position = (portalPosition1 + portalRotation1 * distance2);
 
-		camera1.transform.rotation = playerRotation;
-		camera1.transform.Rotate(0, 180, 0);
+		//camera1.transform.position = (portalPosition2 + distance1);
+		//camera2.transform.position = (portalPosition1 + distance2);
 
-		camera2.transform.rotation = playerRotation;
-		camera2.transform.Rotate(0, 180, 0);
+		camera1.transform.rotation =  portalRotation2 * playerRotation;
+		float near1 = distance1.magnitude - 2;
+		if (near1 < 0.000001F) {
+			near1 = 0.000001F;
+		}
+		//camera1.nearClipPlane = near1;
+//		camera1.transform.Rotate(0, 180, 0);
+
+		camera2.transform.rotation = portalRotation1 * playerRotation;
+		float near2 = distance2.magnitude - 2;
+		if (near2 < 0.01F) {
+			near2 = 0.01F;
+		}
+		camera2.nearClipPlane = near2;
+//		camera2.transform.Rotate(0, 180, 0);
 
 		//camera1.transform.rotation
 
@@ -86,11 +102,11 @@ public class Portal : MonoBehaviour {
 
 	void rot()
 	{
-		float rotPerSec = .01F;
+		float rotPerSec = .00F;
 		float degPerSec = 360 * rotPerSec;
 		degPerTime = degPerSec * Time.deltaTime;
 
-		rotatedPortal.transform.Rotate(0, 0, degPerTime);
+		rotatedPortal.transform.Rotate(0, degPerTime, 0);
 		//Debug.Log (degPerTime);
 	}
 }

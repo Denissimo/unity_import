@@ -63,6 +63,7 @@
      <Compile Include="Assets\Script\Camera1.cs" />
      <Compile Include="Assets\Script\Portal.cs" />
      <Compile Include="Assets\Script\PortalCamera.cs" />
+     <Compile Include="Assets\Script\Send.cs" />
      <Compile Include="Assets\Script\Sender.cs" />
      <Compile Include="Assets\Script\TextureSetup.cs" />
      <None Include="Assets\Shaders\NewImageEffectShader.shader" />

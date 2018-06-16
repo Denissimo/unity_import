@@ -81,8 +81,8 @@ public class Portal : MonoBehaviour {
 
 		camera1.transform.rotation =  portalRotation1 * portalRotation2 * playerRotation;
 		float near1 = distance1.magnitude - 1;
-		if (near1 < 0.000001F) {
-			near1 = 0.000001F;
+		if (near1 < 0.01F) {
+			near1 = 0.01F;
 		}
 		camera1.nearClipPlane = near1;
 //		camera1.transform.Rotate(0, 180, 0);

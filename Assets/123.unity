@@ -373,8 +373,8 @@ GameObject:
   m_PrefabParentObject: {fileID: 1164471245350904, guid: b6003a48f5514434b938d1a19e534204,
     type: 2}
   m_PrefabInternal: {fileID: 1944198817}
---- !u!65 &196988619
-BoxCollider:
+--- !u!64 &196988619
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -382,9 +382,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &196988620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,18 +402,6 @@ MonoBehaviour:
   otherPortal: {fileID: 1547239881}
   player: {fileID: 1184467020}
   dummy: {fileID: 0}
---- !u!65 &196988621
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 196988615}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!20 &276759491 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20858447953194546, guid: 37d1d016f879ea143bd8c78b67df80f0,
@@ -1694,7 +1684,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64027416225712888, guid: b6003a48f5514434b938d1a19e534204, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b6003a48f5514434b938d1a19e534204, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1962425228

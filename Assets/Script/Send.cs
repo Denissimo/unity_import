@@ -39,7 +39,11 @@ public class Send : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider portalCollider) {
+		Teleport(portalCollider);
+	}
 
+
+	void Teleport(Collider portalCollider) {
 		Vector3 playerPosition = player.transform.position;
 		Vector3 otherPortalPosition = otherPortal.transform.position;
 		Vector3 portalPosition = portal.transform.position;
@@ -82,8 +86,5 @@ public class Send : MonoBehaviour {
 			",y = " + playerPosition.y + 
 			",z = " + playerPosition.z 
 		);
-
-
-
 	}
 }

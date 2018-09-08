@@ -93,10 +93,8 @@ public class Portal : MonoBehaviour {
 			near2 = 0.01F;
 		}
 		camera2.nearClipPlane = near2;
-//		camera2.transform.Rotate(0, 180, 0);
-
+		//camera2.transform.Rotate(0, 180, 0);
 		//camera1.transform.rotation
-
 		//Debug.Log (distance2);
 	}
 

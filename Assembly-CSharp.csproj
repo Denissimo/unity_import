@@ -76,10 +76,14 @@
     <Compile Include="Assets\Script\Send.cs" />
     <Compile Include="Assets\Script\Sender.cs" />
     <Compile Include="Assets\Script\TextureSetup.cs" />
+    <None Include="Assets\Shaders\NewUnlitShader.shader" />
     <None Include="Assets\Shaders\NewImageEffectShader.shader" />
     <None Include="Assets\Shaders\FillZValue.shader" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <None Include="Assets\Shaders\JustZValue.shader" />
+    <Reference Include="UnityEditor.StandardEvents">
+      <HintPath>E:/UnityProjects/Import/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/UnityProjects/Import/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

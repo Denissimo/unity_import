@@ -81,6 +81,9 @@
     <Compile Include="Assets\Editor\Water\Water4\SpecularLightingEditor.cs" />
     <Compile Include="Assets\Editor\Water\Water4\WaterBaseEditor.cs" />
     <Compile Include="Assets\Editor\Water\Water4\WaterEditorUtility.cs" />
+    <Reference Include="UnityEditor.StandardEvents">
+      <HintPath>E:/UnityProjects/Import/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/UnityProjects/Import/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
